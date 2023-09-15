@@ -27,6 +27,12 @@ const ProdutoLista = () => {
 			<h2>Lista de Produtos</h2>
 			<button onClick={formulario}>Novo Produto</button>
 			<br /><br />
+			<table>
+				<tr>Descrição</tr>
+				<tr>Valor</tr>
+				<tr>Vaor Promocional</tr>
+				<tr>Ações</tr>
+			</table>
 			{produtos.map((produto)=>
 				<p key={produto.id}>{produto.descricao} {produto.valor}</p>	
 			)}
