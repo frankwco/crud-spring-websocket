@@ -1,13 +1,21 @@
-import axios from "axios";
+import axios from 'axios';
 
 export class ProdutoService{
-    URL = "http://localhost:8080/produtos";
+	URL = "http://localhost:8080/produtos";
 
-    salvar(produto){
-		return axios.post(this.URL, produto);
+	inserir(produto){
+		return axios.post(URL, produto);
 	}
 
-	consultar(){
-		return axios.get(this.URL);
+	alterar(produto){
+		return axios.put(URL, produto);
+	}
+
+	excluir(id){
+		return axios.delete(URL, id);
+	}
+
+	listar(){
+		return axios.get(URL);
 	}
 }

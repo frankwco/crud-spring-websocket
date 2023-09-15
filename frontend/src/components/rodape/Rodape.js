@@ -1,12 +1,11 @@
 import React, {useContext} from 'react';
-import style from './Rodape.module.css';
+import './Rodape.css';
 import { TemaContexto } from '../../App';
 
-
 const Rodape = () => {
-  const {temaDark} = useContext(TemaContexto);
+	const {dark} = useContext(TemaContexto);
   return (
-    <div className={`${style.rodape} ${temaDark?'dark':'light'}`}>
+    <div className={`rodape ${dark?'dark':'light'}`}>
       <p>&copy; 2023 CRUD React, Spring e Websocket</p>
     </div>
   );
