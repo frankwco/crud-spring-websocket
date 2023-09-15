@@ -25,9 +25,9 @@ const ProdutoFormulario = (props) => {
 	return (
 		<div style={{ padding: '10px' }}>
 			<h2>Inserir ou Alterar um Produto</h2>
-			<input type="text" name="descricao" value={produto.descricao} onChange={alterarValor} />
-			<input type="number" name="valor" value={produto.valor} onChange={alterarValor} />
-			<input type="number" name="valorPromocional" value={produto.valorPromocional} onChange={alterarValor} />
+			<input type="text" name="descricao" value={produto.descricao} onChange={alterarValor} /><br /><br />
+			<input type="number" name="valor" value={produto.valor} onChange={alterarValor} /><br /><br />
+			<input type="number" name="valorPromocional" value={produto.valorPromocional} onChange={alterarValor} /><br /><br />
 			<button onClick={salvar}>Salvar</button>
 		</div>
 	);
