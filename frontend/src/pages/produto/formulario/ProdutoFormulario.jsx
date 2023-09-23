@@ -8,7 +8,7 @@ const ProdutoFormulario = (props) => {
 	//const location = useLocation();
 	///const { id } = location.state || {};
 	//const { ii } = useParams();
-
+	const navigate = useNavigate();
 	const produtoNovo = { descricao: '', valor: 0, valorPromocional: 0 };
 	const location = useLocation();
 	const { produtoAlterar } = location.state || {};
@@ -24,6 +24,10 @@ const ProdutoFormulario = (props) => {
 		}		
 	}, []);
 
+	const listaProdutos = () =>{
+		navigate("/produtos")
+	}
+
 	const alterarValor = (event) => {
 		setProduto({ ...produto, [event.target.name]: event.target.value });
 	}
@@ -32,10 +36,12 @@ const ProdutoFormulario = (props) => {
 		if (produto.id) {
 			produtoService.alterar(produto).then(data => {
 				console.log(data);
+				setProduto(produtoNovo);
 			});
 		} else {
 			produtoService.inserir(produto).then(data => {
 				console.log(data);
+				setProduto(produtoNovo);
 			});
 		}
 	}
@@ -47,6 +53,7 @@ const ProdutoFormulario = (props) => {
 			<input type="number" name="valor" value={produto.valor} onChange={alterarValor} /><br /><br />
 			<input type="number" name="valorPromocional" value={produto.valorPromocional} onChange={alterarValor} /><br /><br />
 			<button onClick={salvar}>Salvar</button>
+			<button onClick={listaProdutos}>Lista Produtos</button>
 		</div>
 	);
 }
