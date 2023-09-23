@@ -8,18 +8,36 @@ const ProdutoFormulario = (props) => {
 	//const location = useLocation();
 	///const { id } = location.state || {};
 	//const { ii } = useParams();
+
 	const produtoNovo = { descricao: '', valor: 0, valorPromocional: 0 };
+	const location = useLocation();
+	const { produtoAlterar } = location.state || {};
+
 	const [produto, setProduto] = useState(produtoNovo);
 	const produtoService = new ProdutoService();
+
+	useEffect(() => {
+		if(produtoAlterar){
+			setProduto(produtoAlterar);
+		}else{
+			setProduto(produtoNovo);
+		}		
+	}, []);
 
 	const alterarValor = (event) => {
 		setProduto({ ...produto, [event.target.name]: event.target.value });
 	}
-	
-	const salvar = ()=>{
-		produtoService.inserir(produto).then(data=>{
-			console.log(data);
-		});
+
+	const salvar = () => {
+		if (produto.id) {
+			produtoService.alterar(produto).then(data => {
+				console.log(data);
+			});
+		} else {
+			produtoService.inserir(produto).then(data => {
+				console.log(data);
+			});
+		}
 	}
 
 	return (
