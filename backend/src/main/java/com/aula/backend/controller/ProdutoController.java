@@ -3,6 +3,8 @@ package com.aula.backend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +30,8 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @GetMapping
-    public List<Produto> listarTodos() {
-        return produtoService.listarTodos();
+    public Page<Produto> listarTodos(Pageable pageable) {
+        return produtoService.listarTodos(pageable);
     }
 
     @PostMapping
